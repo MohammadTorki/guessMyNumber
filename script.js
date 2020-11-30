@@ -2,9 +2,7 @@
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let scoreNumber = 20;
-
-// // You should probably change this before release!
-// document.querySelector('.number').textContent = secretNumber;
+let highScore = 0;
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
@@ -17,6 +15,12 @@ document.querySelector('.check').addEventListener('click', function () {
     // When player wins
   } else if (guess == secretNumber) {
     document.querySelector('.message').textContent = '🎉 Correct Number!';
+
+    // HighScore!
+    if (scoreNumber > highScore) {
+      highScore = scoreNumber;
+      document.querySelector('.highscore').textContent = highScore;
+    }
 
     // Manipulating styles in CSS
     document.querySelector('body').style.backgroundColor = '#60b347';
